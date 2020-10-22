@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>现代亚威农-{{text_title}}</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<link rel="stylesheet" type="text/css" href="static/style.css" />
+	<link rel="stylesheet" type="text/css" href="static/btn.css" />
+	<script type="text/javascript" src="static/jquery-2.1.4.min.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function UrlPOST(url, dat, myfun){
+	if (url=="" && dat==""){return "Error parm";}
+	$.ajax({
+		type: "POST",
+		data: dat,
+		url: url,
+		success: function(data){myfun(data);}
+	});
+}
+
+
+function playMusic() {
+    var audioEle = document.getElementById("audio");
+    //audioEle.src=path;
+    audioEle.load();
+    if (audioEle.paused){ /*如果已经暂停*/
+        audioEle.play();   //播放
+    }else {
+        audioEle.pause();  //暂停
+    }
+}
+
+//-->
+</SCRIPT>
+</head>
+<body>
+	<div class='box'>
+		<div class="box-left" style="width:960px;text-align:left;">
+			{% for i in range(6) %}
+			<div class="box-video">
+				<span id="txt_tip">摄像头序号:{{i}}</span>
+				<img id="bg_{{i}}" class="imgShow" src="/video_feed?i={{i}}">
+				<button class="custom-btn btn-8" id="bt_{{i}}" style="height:40px;margin-left:90px;">
+				拍照</button>
+			</div>
+			{% endfor %}
+
+		</div>
+	</div>
+
+
+<script type= "text/javascript">
+$(function(){
+	$( "button[id^='bt_']" ).each( function(){//获取所有的id为tochannel_开头的Button
+		$(this).bind("click" , function(){//绑定当前点击的按钮
+			var ids = $(this).attr("id");//获取它的id属性值
+			var arr = ids.split("_");
+			var id = arr[1];
+			//alert("you click button :" + id);
+			alert("拍照功能还没做呢，敬请期待!")
+			/*
+			$("#bg_"+id).attr("src","/static/images/cap.jpg");
+			playMusic();
+			UrlPOST('/cap', {id:id}, function (dat){
+				if (dat['status']=="OK"){
+					//fn = dat['cap_0'];
+					$("#bg_"+id).attr("src",'/video_feed?i='+id);
+					//$("#txt_tip").html('请稍候，3秒后自动跳转...');
+				}
+				else{
+					alert('拍照失败，请检查硬件...');
+				}
+			}); 
+			*/
+		});
+	});
+});
+</script>
+
+</body>
+</html>
