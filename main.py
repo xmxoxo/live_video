@@ -12,14 +12,8 @@ import sys
 import time
 import logging
 import traceback
-import numpy as np
-import time
 import cv2
-#from PIL import Image
-import io
 import random
-
-
 
 from flask import Flask, request, render_template, jsonify, abort, make_response
 from flask import url_for, Response, json, session, send_from_directory
